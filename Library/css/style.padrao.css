@@ -2,12 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css');
 
-:root{
+:root {
     --colorPrymary1: #02DDE8;
-    --colorPrymary2: #0297F2; 
-    --colorPrymary3: #0944DB; 
-    --colorPrymary4: #0F02F2; 
-    --colorPrymary5: #5D00EB; 
+    --colorPrymary2: #0297F2;
+    --colorPrymary3: #0944DB;
+    --colorPrymary4: #0F02F2;
+    --colorPrymary5: #820AD1;
+    --colorPrymary5: #5D00EB;
 }
 
 html {
