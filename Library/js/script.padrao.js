@@ -12,8 +12,9 @@
  * */
 
 const url = new URL(document.URL);
-const urlAPI = `${url.protocol}//${url.host}`;
-//const urlAPI = `https://localhost:44382`;
+const urlHost = `${url.protocol}//${url.host}`;
+const urlAPI = `${urlHost}/api/`;
+//const urlAPI = `https://localhost:44382/`;
 
 //Cores primarias
 const colorPrymary1Hex = "#02DDE8";
@@ -30,6 +31,7 @@ const colorPrymary4Rgb = "15, 2, 242";
 const colorPrymary5Rgb = "93, 0, 235";
 
 document.addEventListener('DOMContentLoaded', () => {
+    debugger;
     var URLHOST = new URL(window.location.href);
 
     var ext = URLHOST.host.indexOf('apply.client') > -1;
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var cod = recuperaUserCodCookie();
 
     if (cod == '' || cod == null || cod == undefined) {
-        if (window.location.href == `${urlAPI}/Security/Login/`) {
+        if (window.location.href == `${urlHost}/Security/Login/`) {
             return;
         }
 
@@ -309,7 +311,13 @@ const Elements = {
                     alert("O Load não pode ser nulo");
                     return
                 }
-                document.getElementById(load).remove();
+
+                var ld = document.getElementById(load);
+                
+                if (ld != null && ld != undefined) {
+                    ld.remove();
+                }
+                
             } catch (error) {
                 console.log(error);
             }
@@ -375,7 +383,7 @@ var logOut = function () {
     Scripts.Elements.Message.Error("Redirecionando para o login...");
     document.cookie = `username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     document.cookie = `usercod=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    setTimeout(() => { window.location.href = `${urlAPI}/Security/Login/`; }, 3000);
+    setTimeout(() => { window.location.href = `${urlHost}/Security/Login/`; }, 3000);
 }
 
 var recuperaUserNameCookie = function () {    
@@ -388,7 +396,8 @@ var recuperaUserNameCookie = function () {
     }
 };
 
-var recuperaUserCodCookie = function () {    
+var recuperaUserCodCookie = function () {
+    debugger;
     try {
         var cookie = document.cookie.split(';')
         return cookie[1].replaceAll('usercod=', '');

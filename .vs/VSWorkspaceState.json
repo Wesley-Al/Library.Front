@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Library",
-    "\\Library\\css"
+    "\\Library\\css",
+    "\\Library\\js"
   ],
+  "SelectedNode": "\\Library\\js\\script.padrao.js",
   "PreviewInSolutionExplorer": false
 }
