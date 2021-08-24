@@ -387,7 +387,7 @@ var recuperaUserCodCookie = function () {
     try {
         var cookie = document.cookie.split(';')
         return cookie[1].replaceAll('usercod=', '');
-    } catch () {
+    } catch (error) {
         return null;
     }    
 };
