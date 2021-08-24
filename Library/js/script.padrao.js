@@ -30,9 +30,11 @@ const colorPrymary4Rgb = "15, 2, 242";
 const colorPrymary5Rgb = "93, 0, 235";
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    if (ext) {
-        return;
+    
+    if (ext != null && ext != undefined) {
+        if (ext == true) {
+            return;
+        }        
     }
 
     var cod = recuperaUserCodCookie();
