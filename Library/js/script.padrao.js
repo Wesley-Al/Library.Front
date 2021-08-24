@@ -369,14 +369,23 @@ var logOut = function () {
     setTimeout(() => { window.location.href = `${urlAPI}/Security/Login/`; }, 3000);
 }
 
-var recuperaUserNameCookie = function () {
-    var cookie = document.cookie.split(';')
-    return cookie[0].replaceAll('username=', '');
+var recuperaUserNameCookie = function () {    
+    try {
+        var cookie = document.cookie.split(';')
+        return cookie[0].replaceAll('username=', '');
+
+    } catch (error) {
+        return null;
+    }
 };
 
-var recuperaUserCodCookie = function () {
-    var cookie = document.cookie.split(';')
-    return cookie[1].replaceAll('usercod=', '');
+var recuperaUserCodCookie = function () {    
+    try {
+        var cookie = document.cookie.split(';')
+        return cookie[1].replaceAll('usercod=', '');
+    } catch () {
+        return null;
+    }    
 };
 
 //Métodos nativos reescritos
