@@ -30,10 +30,10 @@ const colorPrymary4Rgb = "15, 2, 242";
 const colorPrymary5Rgb = "93, 0, 235";
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    var name = recuperaUserCookie();
+        
+    var cod = recuperaUserCodCookie();
 
-    if (name == '' || name == null || name == undefined) {
+    if (cod == '' || cod == null || cod == undefined) {
         if (window.location.href == `${urlAPI}/Security/Login/`) {
             return;
         }
@@ -365,12 +365,18 @@ const Scripts = {
 var logOut = function () {    
     Scripts.Elements.Message.Error("Redirecionando para o login...");
     document.cookie = `username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    document.cookie = `usercod=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     setTimeout(() => { window.location.href = `${urlAPI}/Security/Login/`; }, 3000);
 }
 
-var recuperaUserCookie = function () {
+var recuperaUserNameCookie = function () {
     var cookie = document.cookie.split(';')
     return cookie[0].replaceAll('username=', '');
+};
+
+var recuperaUserCodCookie = function () {
+    var cookie = document.cookie.split(';')
+    return cookie[1].replaceAll('usercod=', '');
 };
 
 //Métodos nativos reescritos
