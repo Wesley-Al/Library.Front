@@ -39,3 +39,57 @@ a:hover{
     position: absolute;
     top: 8%;
 }
+
+.iconMessage {
+    position: absolute;
+    top: 83%;
+    left: 5%;
+    color: white;
+}
+
+.messageError {
+    width: 10%;
+    height: 10%;
+    background-color: red;
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    border-radius: 9px;
+    font-size: 1.5vh;
+}
+
+.messageSuccess {
+    width: 10%;
+    height: 10%;
+    background-color: green;
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    border-radius: 9px;
+    font-size: 1.5vh;
+}
+
+.messageContent {
+    height: 80%;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: var(--colorPrymary6);
+    font-weight: 600;
+    padding-top: 11%;
+}
+
+    .messageContent span {
+        /*white-space: nowrap;*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+        direction: ltr;
+    }
+
+    .messageContent #divGrowing {
+        width: 1rem !important;
+        height: 1rem !important;
+    }

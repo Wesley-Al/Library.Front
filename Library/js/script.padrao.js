@@ -13,6 +13,7 @@
 
 const url = new URL(document.URL);
 const urlAPI = `${url.protocol}//${url.host}`;
+//const urlAPI = `https://localhost:44382`;
 
 //Cores primarias
 const colorPrymary1Hex = "#02DDE8";
@@ -29,7 +30,16 @@ const colorPrymary4Rgb = "15, 2, 242";
 const colorPrymary5Rgb = "93, 0, 235";
 
 document.addEventListener('DOMContentLoaded', () => {
+    
+    var name = recuperaUserCookie();
 
+    if (name == '' || name == null || name == undefined) {
+        if (window.location.href == `${urlAPI}/Security/Login/`) {
+            return;
+        }
+
+        logOut();
+    }
 })
 
 const Grafico = {
@@ -295,6 +305,54 @@ const Elements = {
                 console.log(error);
             }
         }
+    },
+    Message: {
+        Remove: () => {
+            document.querySelectorAll('.messageError').forEach((obj, index) => { obj.remove(); });
+            document.querySelectorAll('.messageSuccess').forEach((obj, index) => { obj.remove(); });
+        },
+        Success: (msg) => {
+            try {
+                Message.Remove();
+            } catch (error) { }
+
+            var div = Scripts.Elements.Create('div', null, 'message', 'messageSuccess');
+            var divContent = Scripts.Elements.Create('div', 'messageContent', null, 'messageContent');
+            var span = Scripts.Elements.Create('span');
+            // var iconTrash = Scripts.Elements.Create('i', null, null, null, null, ['fas', 'fa-eraser']);
+            var icon = Scripts.Elements.Create('i', null, null, null, null, ['fas', 'fa-check', 'iconMessage']);
+
+            span.textContent = msg;
+            //span.appendChild(iconTrash);
+
+            divContent.appendChild(span);
+
+            div.appendChild(divContent);
+            div.appendChild(icon);
+
+            document.body.appendChild(div);
+        },
+        Error: (msg) => {
+            try {
+                Message.Remove();
+            } catch (error) { }
+            
+            var div = Scripts.Elements.Create('div', null, 'message', 'messageError');
+            var divContent = Scripts.Elements.Create('div', 'messageContent', null, 'messageContent');
+            var span = Scripts.Elements.Create('span');
+            // var iconTrash = Scripts.Elements.Create('i', null, null, null, null, ['fas', 'fa-eraser']);
+            var icon = Scripts.Elements.Create('i', null, null, null, null, ['fas', 'fa-bug', 'iconMessage']);
+
+            span.textContent = msg;
+            //span.appendChild(iconTrash);
+
+            divContent.appendChild(span);
+
+            div.appendChild(divContent);
+            div.appendChild(icon);
+
+            document.body.appendChild(div);
+        }
     }
 }
 
@@ -303,6 +361,17 @@ const Scripts = {
     API: API,
     Elements: Elements
 }
+
+var logOut = function () {    
+    Scripts.Elements.Message.Error("Redirecionando para o login...");
+    document.cookie = `username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    setTimeout(() => { window.location.href = `${urlAPI}/Security/Login/`; }, 3000);
+}
+
+var recuperaUserCookie = function () {
+    var cookie = document.cookie.split(';')
+    return cookie[0].replaceAll('username=', '');
+};
 
 //Métodos nativos reescritos
 
