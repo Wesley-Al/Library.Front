@@ -31,7 +31,7 @@ const colorPrymary4Rgb = "15, 2, 242";
 const colorPrymary5Rgb = "93, 0, 235";
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+    debugger;
     var URLHOST = new URL(window.location.href);
 
     var ext = URLHOST.host.indexOf('apply.client') > -1;
@@ -387,17 +387,29 @@ var logOut = function () {
 }
 
 var recuperaUserNameCookie = function () {    
-    try {        
-        return document.cookie.split('username=')[1];
+    try {
+        var cookie = document.cookie.split(';');
+        var name = '';
+        if (cookie.find(x => x.indexOf('username=') > -1) != undefined) {
+            name = cookie.find(x => x.indexOf('username=') > -1).replaceAll('username=', '')
+        }
+
+        return name;
     } catch (error) {
         return null;
     }
 };
 
-var recuperaUserCodCookie = function () {
-    
-    try {        
-        return document.cookie.split('usercod=')[1];
+var recuperaUserCodCookie = function () {    
+    try {
+        var cookie = document.cookie.split(';');
+        var cod = '';
+        if (cookie.find(x => x.indexOf('usercod=') > -1) != undefined) {
+            cod = parseInt(cookie.find(x => x.indexOf('usercod=') > -1).replaceAll('usercod=', ''));
+        }
+
+        return cod;
+        
     } catch (error) {
         return null;
     }    
