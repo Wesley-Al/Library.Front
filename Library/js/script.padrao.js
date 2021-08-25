@@ -31,7 +31,7 @@ const colorPrymary4Rgb = "15, 2, 242";
 const colorPrymary5Rgb = "93, 0, 235";
 
 document.addEventListener('DOMContentLoaded', () => {
-    debugger;
+    
     var URLHOST = new URL(window.location.href);
 
     var ext = URLHOST.host.indexOf('apply.client') > -1;
@@ -387,20 +387,17 @@ var logOut = function () {
 }
 
 var recuperaUserNameCookie = function () {    
-    try {
-        var cookie = document.cookie.split(';')
-        return cookie[0].replaceAll('username=', '');
-
+    try {        
+        return document.cookie.split('username=')[1];
     } catch (error) {
         return null;
     }
 };
 
 var recuperaUserCodCookie = function () {
-    debugger;
-    try {
-        var cookie = document.cookie.split(';')
-        return cookie[1].replaceAll('usercod=', '');
+    
+    try {        
+        return document.cookie.split('usercod=')[1];
     } catch (error) {
         return null;
     }    
