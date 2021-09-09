@@ -93,3 +93,33 @@ a:hover{
         width: 1rem !important;
         height: 1rem !important;
     }
+
+    .backMenu {
+        transform: rotate( -139deg );
+        font-size: 4vh;
+        color: var(--colorPrymary5);
+        opacity: 60%;
+        transition: background-color,transform,opacity 0.5s;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+    }
+
+        .backMenu:hover {
+            border-radius: 15px;
+            transform: rotate( -119deg );
+            color: var(--colorPrymary5) !important;
+            opacity: 100%;
+            font-weight: 600 !important;
+            transition: background-color,transform,opacity 0.5s;
+            transition-duration: 0.5s;
+            transition-timing-function: ease-in-out;
+        }
+
+#logout {
+    top: 2%;
+    right: 5%;
+    position: absolute;
+    color: var(--colorPrymary5);
+    font-weight: 600;
+    cursor: pointer;
+}

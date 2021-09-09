@@ -14,6 +14,7 @@
 const url = new URL(document.URL);
 const urlHost = `${url.protocol}//${url.host}`;
 const urlAPI = `${urlHost}/api/`;
+//const urlAPI = `https://intru.herokuapp.com/`;
 //const urlAPI = `https://localhost:44382/`;
 
 //Cores primarias
@@ -31,10 +32,10 @@ const colorPrymary4Rgb = "15, 2, 242";
 const colorPrymary5Rgb = "93, 0, 235";
 
 document.addEventListener('DOMContentLoaded', () => {
-    debugger;
+    
     var URLHOST = new URL(window.location.href);
 
-    var ext = URLHOST.host.indexOf('apply.client') > -1;
+    var ext = URLHOST.host.indexOf('intru') > -1;
 
     if (ext != null && ext != undefined) {
         if (ext != true) {
